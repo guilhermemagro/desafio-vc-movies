@@ -1,4 +1,4 @@
-package br.com.guilhermerm.desafiovcmovie;
+package br.com.guilhermerm.desafiovcmovies;
 
 import androidx.appcompat.app.AppCompatActivity;
 
