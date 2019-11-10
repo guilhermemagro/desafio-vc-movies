@@ -9,11 +9,12 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="40sp"
+        android:layout_marginBottom="20sp"
         android:adjustViewBounds="true"
-        android:maxHeight="200sp"
+        android:maxHeight="100sp"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/vcmovies_branco_grande" />
+        app:srcCompat="@drawable/vcmovies_logo" />
 
     <TextView
         android:layout_width="wrap_content"
