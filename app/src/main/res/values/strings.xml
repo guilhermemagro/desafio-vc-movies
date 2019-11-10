@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">VCMovies</string>
+    <string name="pesquisar_por">Pesquisar por:</string>
+    <string name="titulo">Título:</string>
+    <string name="ano_opcional">Ano: (Opcional)</string>
+    <string name="pesquisar">Pesquisar</string>
+
+<!--  Informacoes fragment  -->
+    <string name="info_1">Aplicativo desenvolvido por:</string>
+    <string name="info_2">Guilherme Resende Magro</string>
+
+    <string name="info_3">Objetivo:</string>
+    <string name="info_4">Teste para ValeCard</string>
+
+    <string name="info_5">Tecnologias utilizadas:</string>
+    <string name="info_6">abc</string>
+
+    <string name="info_7">API utilizada:</string>
+    <string name="info_8">http://www.omdbapi.com</string>
+
+    <string-array name="array_cidades">
+        <item>Todos</item>
+        <item>Filme</item>
+        <item>Série</item>
+        <item>Episódio</item>
+        <item>Jogo</item>
+    </string-array>
 </resources>

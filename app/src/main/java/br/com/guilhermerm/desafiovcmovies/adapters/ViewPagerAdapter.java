@@ -1,4 +1,4 @@
-package br.com.guilhermerm.desafiovcmovies.adapter;
+package br.com.guilhermerm.desafiovcmovies.adapters;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

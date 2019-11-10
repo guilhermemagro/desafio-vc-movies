@@ -5,11 +5,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import br.com.guilhermerm.desafiovcmovies.R;
-import br.com.guilhermerm.desafiovcmovies.adapter.ViewPagerAdapter;
+import br.com.guilhermerm.desafiovcmovies.adapters.ViewPagerAdapter;
 import br.com.guilhermerm.desafiovcmovies.fragments.InformacoesFragment;
 import br.com.guilhermerm.desafiovcmovies.fragments.ListaFragment;
 import br.com.guilhermerm.desafiovcmovies.fragments.PesquisarFragment;
