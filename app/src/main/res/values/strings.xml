@@ -9,6 +9,16 @@
     <string name="serie_nao_encontrada">Série não encontrada!</string>
     <string name="um_erro_inesperado_ocorreu">Um erro inesperado ocorreu!</string>
 
+    <!--  Linha_resultado  -->
+    <string name="res_titulo">Título:</string>
+    <string name="res_ano">Ano:</string>
+    <string name="res_imdbID">ImdbID:</string>
+    <string name="res_categoria">Categoria:</string>
+    <string name="res_teste">Teste</string>
+
+    <!--  Lista_fragment  -->
+    <string name="lista_teste">Teste</string>
+
     <!--  Informacoes fragment  -->
     <string name="info_1">Aplicativo desenvolvido por:</string>
     <string name="info_2">Guilherme Resende Magro</string>
