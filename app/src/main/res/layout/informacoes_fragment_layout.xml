@@ -7,9 +7,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher_foreground" />
+        android:layout_marginTop="20sp"
+        android:adjustViewBounds="true"
+        android:maxHeight="200sp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/vcmovies_branco_grande" />
 
     <TextView
         android:layout_width="wrap_content"

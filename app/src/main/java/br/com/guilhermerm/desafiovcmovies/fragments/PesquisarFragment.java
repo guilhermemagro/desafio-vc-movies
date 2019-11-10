@@ -1,10 +1,6 @@
 package br.com.guilhermerm.desafiovcmovies.fragments;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,17 +61,7 @@ public class PesquisarFragment extends Fragment {
                     @Override
                     public void onResponse(Call<ObjetoResultado> call, Response<ObjetoResultado> response) {
                         ObjetoResultado objetoResultado = response.body();
-
-                        if (objetoResultado.getError().equals("Movie not found!")){
-                            Toast.makeText(getContext(), "Filme não encontrado!", Toast.LENGTH_LONG).show();
-                            return;
-                        } else if(objetoResultado.getError().equals("Too many results.")){
-                            Toast.makeText(getContext(), "Muitos resultados encontrados, por favor, refinar a pesquisa!", Toast.LENGTH_LONG).show();
-                            return;
-                        } else if(objetoResultado.getError().equals("Something went wrong.")){
-                            Toast.makeText(getContext(), "Um erro inesperado ocorreu!", Toast.LENGTH_LONG).show();
-                            return;
-                        }
+                        imprimirMensagensDeErros(objetoResultado);
 
                         txtTeste.setText(objetoResultado.toString());
                     }
@@ -119,5 +102,24 @@ public class PesquisarFragment extends Fragment {
             parametros.put("y", ano);
         }
         return parametros;
+    }
+
+    public void imprimirMensagensDeErros(ObjetoResultado objetoResultado) {
+        if (objetoResultado.getError() != null) {
+            switch (objetoResultado.getError()) {
+                case "Movie not found!":
+                    Toast.makeText(getContext(), R.string.titulo_nao_encontrado, Toast.LENGTH_LONG).show();
+                    break;
+                case "Too many results.":
+                    Toast.makeText(getContext(), R.string.muitos_resultados_encontrados, Toast.LENGTH_LONG).show();
+                    break;
+                case "Series not found!":
+                    Toast.makeText(getContext(), R.string.serie_nao_encontrada, Toast.LENGTH_LONG).show();
+                    break;
+                case "Something went wrong.":
+                    Toast.makeText(getContext(), R.string.um_erro_inesperado_ocorreu, Toast.LENGTH_LONG).show();
+                    break;
+            }
+        }
     }
 }

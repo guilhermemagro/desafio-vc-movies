@@ -4,6 +4,10 @@
     <string name="titulo">Título:</string>
     <string name="ano_opcional">Ano: (Opcional)</string>
     <string name="pesquisar">Pesquisar</string>
+    <string name="titulo_nao_encontrado">Título não encontrado!</string>
+    <string name="muitos_resultados_encontrados">Muitos resultados encontrados, por favor, refinar a pesquisa!</string>
+    <string name="serie_nao_encontrada">Série não encontrada!</string>
+    <string name="um_erro_inesperado_ocorreu">Um erro inesperado ocorreu!</string>
 
 <!--  Informacoes fragment  -->
     <string name="info_1">Aplicativo desenvolvido por:</string>
@@ -13,7 +17,7 @@
     <string name="info_4">Teste para ValeCard</string>
 
     <string name="info_5">Tecnologia utilizada:</string>
-    <string name="info_6">Retrofit:2.6.2</string>
+    <string name="info_6">Retrofit v.2.6.2</string>
 
     <string name="info_7">API utilizada:</string>
     <string name="info_8">http://www.omdbapi.com</string>
