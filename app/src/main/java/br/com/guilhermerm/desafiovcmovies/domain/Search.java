@@ -25,14 +25,6 @@ public class Search {
     @Expose
     private String poster;
 
-    public Search(String title, String year, String imdbID, String type, String poster) {
-        this.title = title;
-        this.year = year;
-        this.imdbID = imdbID;
-        this.type = type;
-        this.poster = poster;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -71,5 +63,16 @@ public class Search {
 
     public void setPoster(String poster) {
         this.poster = poster;
+    }
+
+    @Override
+    public String toString() {
+        return "Search{" +
+                "title='" + title + '\'' +
+                ", year='" + year + '\'' +
+                ", imdbID='" + imdbID + '\'' +
+                ", type='" + type + '\'' +
+                ", poster='" + poster + '\'' +
+                '}';
     }
 }

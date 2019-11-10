@@ -23,12 +23,6 @@ public class ObjetoResultado {
     @Expose
     private String error;
 
-    public ObjetoResultado(List<Search> search, String totalResults, String response) {
-        this.search = search;
-        this.totalResults = totalResults;
-        this.response = response;
-    }
-
     public List<Search> getSearch() {
         return search;
     }
@@ -59,5 +53,15 @@ public class ObjetoResultado {
 
     public void setError(String error) {
         this.error = error;
+    }
+
+    @Override
+    public String toString() {
+        return "ObjetoResultado{" +
+                "search=" + search +
+                ", totalResults='" + totalResults + '\'' +
+                ", response='" + response + '\'' +
+                ", error='" + error + '\'' +
+                '}';
     }
 }
