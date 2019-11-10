@@ -12,8 +12,8 @@
     <string name="info_3">Objetivo:</string>
     <string name="info_4">Teste para ValeCard</string>
 
-    <string name="info_5">Tecnologias utilizadas:</string>
-    <string name="info_6">abc</string>
+    <string name="info_5">Tecnologia utilizada:</string>
+    <string name="info_6">Retrofit:2.6.2</string>
 
     <string name="info_7">API utilizada:</string>
     <string name="info_8">http://www.omdbapi.com</string>

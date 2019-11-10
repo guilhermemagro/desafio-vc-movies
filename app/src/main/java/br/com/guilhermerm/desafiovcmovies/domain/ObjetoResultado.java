@@ -1,49 +1,63 @@
 package br.com.guilhermerm.desafiovcmovies.domain;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class ObjetoResultado {
-    private String title;
-    private String year;
-    private String imdbID;
-    private String type;
-    private String poster;
 
-    public String getTitle() {
-        return title;
+    @SerializedName("Search")
+    @Expose
+    private List<Search> search = null;
+
+    @SerializedName("totalResults")
+    @Expose
+    private String totalResults;
+
+    @SerializedName("Response")
+    @Expose
+    private String response;
+
+    @SerializedName("Error")
+    @Expose
+    private String error;
+
+    public ObjetoResultado(List<Search> search, String totalResults, String response) {
+        this.search = search;
+        this.totalResults = totalResults;
+        this.response = response;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public List<Search> getSearch() {
+        return search;
     }
 
-    public String getYear() {
-        return year;
+    public void setSearch(List<Search> search) {
+        this.search = search;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public String getTotalResults() {
+        return totalResults;
     }
 
-    public String getImdbID() {
-        return imdbID;
+    public void setTotalResults(String totalResults) {
+        this.totalResults = totalResults;
     }
 
-    public void setImdbID(String imdbID) {
-        this.imdbID = imdbID;
+    public String getResponse() {
+        return response;
     }
 
-    public String getType() {
-        return type;
+    public void setResponse(String response) {
+        this.response = response;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getError() {
+        return error;
     }
 
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
+    public void setError(String error) {
+        this.error = error;
     }
 }
