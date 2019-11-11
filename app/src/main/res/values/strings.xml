@@ -18,6 +18,10 @@
 
     <!--  Lista_fragment  -->
     <string name="lista_teste">Teste</string>
+    <string name="lista_voltar">Voltar</string>
+    <string name="lista_avancar">Avançar</string>
+    <string name="lista_paginas">1/1</string>
+    <string name="lista_resultados">0 resultado</string>
 
     <!--  Informacoes fragment  -->
     <string name="info_1">Aplicativo desenvolvido por:</string>

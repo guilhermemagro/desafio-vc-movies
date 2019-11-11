@@ -11,42 +11,48 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/lista_btn_voltar"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:layout_width="36dp"
+        android:id="@+id/lista_txt_resultados"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lista_teste"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/button2" />
+        android:text="@string/lista_resultados"
+        app:layout_constraintBottom_toBottomOf="@+id/lista_btn_avancar"
+        app:layout_constraintEnd_toStartOf="@+id/lista_btn_avancar"
+        app:layout_constraintStart_toEndOf="@+id/lista_btn_voltar" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/lista_btn_voltar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/lista_teste"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/lista_voltar"
+        android:textColor="@color/tabtextcolor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/lista_txt_paginas"
         android:layout_width="36dp"
         android:layout_height="wrap_content"
-        android:text="@string/lista_teste"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        android:text="@string/lista_paginas"
+        app:layout_constraintEnd_toStartOf="@+id/lista_btn_avancar"
+        app:layout_constraintStart_toEndOf="@+id/lista_btn_voltar"
+        app:layout_constraintTop_toTopOf="@+id/lista_btn_avancar" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/lista_btn_avancar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/lista_teste"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/lista_avancar"
+        android:textColor="@color/tabtextcolor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

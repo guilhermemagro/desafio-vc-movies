@@ -1,23 +1,28 @@
 package br.com.guilhermerm.desafiovcmovies.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
 import br.com.guilhermerm.desafiovcmovies.R;
 import br.com.guilhermerm.desafiovcmovies.adapters.ViewPagerAdapter;
+import br.com.guilhermerm.desafiovcmovies.domain.ObjetoResultado;
 import br.com.guilhermerm.desafiovcmovies.fragments.InformacoesFragment;
 import br.com.guilhermerm.desafiovcmovies.fragments.ListaFragment;
 import br.com.guilhermerm.desafiovcmovies.fragments.PesquisarFragment;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        PesquisarFragment.PassarDadosEventListener {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+    private ObjetoResultado objetoResultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +39,20 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(getBaseContext(), "onResume MAIN ACTIVITY", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void passarDados(ObjetoResultado objetoResultado) {
+        this.objetoResultado = objetoResultado;
+    }
+
+    public ObjetoResultado obterResultado() {
+        return this.objetoResultado;
     }
 }

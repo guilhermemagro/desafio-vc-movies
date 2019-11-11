@@ -15,7 +15,7 @@ import br.com.guilhermerm.desafiovcmovies.domain.Search;
 public class ResultsAdapter extends ArrayAdapter<Search> {
 
     private final Context context;
-    private final ArrayList<Search> resultados
+    private final ArrayList<Search> resultados;
 
     public ResultsAdapter(Context context, ArrayList<Search> resultados) {
         super(context, R.layout.linha_resultado ,resultados);
