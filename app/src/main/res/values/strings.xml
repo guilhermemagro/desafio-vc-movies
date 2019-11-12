@@ -8,6 +8,12 @@
     <string name="muitos_resultados_encontrados">Muitos resultados encontrados, por favor, refinar a pesquisa!</string>
     <string name="serie_nao_encontrada">Série não encontrada!</string>
     <string name="um_erro_inesperado_ocorreu">Um erro inesperado ocorreu!</string>
+    <string name="ocorreu_um_erro">Ocorreu um erro, por favor, confira a sua internet!</string>
+    <string name="resultado">resultado</string>
+    <string name="resultados">resultados</string>
+    <string name="lista">Lista</string>
+    <string name="informacoes">Informações</string>
+
 
     <!--  Linha_resultado  -->
     <string name="res_titulo">Título:</string>
@@ -30,8 +36,9 @@
     <string name="info_3">Objetivo:</string>
     <string name="info_4">Teste para ValeCard</string>
 
-    <string name="info_5">Tecnologia utilizada:</string>
+    <string name="info_5">Tecnologias utilizadas:</string>
     <string name="info_6">Retrofit v.2.6.2</string>
+    <string name="info_9">Picasso v2.71828</string>
 
     <string name="info_7">API utilizada:</string>
     <string name="info_8">http://www.omdbapi.com</string>

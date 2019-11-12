@@ -97,7 +97,7 @@ public class PesquisarFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ObjetoResultado> call, Throwable t) {
-                Toast.makeText(getContext(), "Ocorreu um erro, por favor, confira a sua internet!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.ocorreu_um_erro, Toast.LENGTH_LONG).show();
             }
         });
     }

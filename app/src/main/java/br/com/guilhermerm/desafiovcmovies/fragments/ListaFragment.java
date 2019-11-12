@@ -87,6 +87,7 @@ public class ListaFragment extends Fragment {
     }
 
     public void passarDadosPesquisaInicial(){
+        paginaAtual = 1;
         MainActivity activity = (MainActivity) getActivity();
         objetoResultado = activity.getObjetoResultado();
         parametros = activity.getParametros();
@@ -110,7 +111,7 @@ public class ListaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ObjetoResultado> call, Throwable t) {
-                Toast.makeText(getContext(), "Ocorreu um erro, por favor, confira a sua internet!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.ocorreu_um_erro, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -124,8 +125,8 @@ public class ListaFragment extends Fragment {
             if (objetoResultado.getTotalResults() != null) {
                 Integer numResultadosInt = Integer.parseInt(objetoResultado.getTotalResults());
                 String textoResultados = numResultadosInt > 1 ?
-                        numResultadosInt + " resultados" :
-                        numResultadosInt + " resultado";
+                        numResultadosInt + " " + getString(R.string.resultados):
+                        numResultadosInt + " " + getString(R.string.resultado);
 
                 totalDePaginas = ((numResultadosInt - 1) / 10) + 1;
                 String textoPaginas = paginaAtual + "/" + totalDePaginas;

@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements
         ViewPager mViewPager = findViewById(R.id.viewpager_id);
 
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PesquisarFragment(), "Pesquisar");
-        adapter.addFragment(new ListaFragment(), "Lista");
-        adapter.addFragment(new InformacoesFragment(), "Informações");
+        adapter.addFragment(new PesquisarFragment(), getString(R.string.pesquisar));
+        adapter.addFragment(new ListaFragment(), getString(R.string.lista));
+        adapter.addFragment(new InformacoesFragment(), getString(R.string.informacoes));
 
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);

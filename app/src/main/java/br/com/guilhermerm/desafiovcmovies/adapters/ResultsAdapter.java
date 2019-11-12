@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,11 +38,18 @@ public class ResultsAdapter extends ArrayAdapter<Search> {
         TextView txtTitulo = rowView.findViewById(R.id.txt_titulo);
         TextView txtCategoria = rowView.findViewById(R.id.txt_categoria);
         TextView txtAno = rowView.findViewById(R.id.txt_ano);
+        ImageView imgPoster = rowView.findViewById(R.id.res_imagem);
 
         txtImdbID.setText(resultado.getImdbID());
         txtTitulo.setText(resultado.getTitle());
         txtCategoria.setText(resultado.getType());
         txtAno.setText(resultado.getYear());
+
+        if (("N/A").equals(resultado.getPoster())){
+            imgPoster.setImageResource(R.drawable.sem_imagem);
+        } else {
+            Picasso.get().load(resultado.getPoster()).into(imgPoster);
+        }
 
         return rowView;
     }
