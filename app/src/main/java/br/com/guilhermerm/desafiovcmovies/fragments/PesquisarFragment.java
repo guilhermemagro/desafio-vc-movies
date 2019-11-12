@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,10 +35,10 @@ public class PesquisarFragment extends Fragment {
     }
 
     public interface PassarDadosEventListener {
-        public void passarDados(ObjetoResultado objetoResultado);
+        public void passarDados(ObjetoResultado objetoResultado, Map<String, String> parametros);
     }
 
-    PassarDadosEventListener passarDadosEventListener;
+    private PassarDadosEventListener passarDadosEventListener;
 
     @Override
     public void onAttach(Context context) {
@@ -74,33 +74,39 @@ public class PesquisarFragment extends Fragment {
                 String categoria = spnCategoria.getSelectedItem().toString();
                 String titulo = edtTitulo.getText().toString();
                 String ano = edtAno.getText().toString();
-                Map<String, String> parametros = obterParametros(categoria, titulo, ano);
-
-                Call<ObjetoResultado> call = new RetrofitConfig().
-                        getMoviesService().buscarFilmes(parametros);
-                call.enqueue(new Callback<ObjetoResultado>() {
-                    @Override
-                    public void onResponse(Call<ObjetoResultado> call, Response<ObjetoResultado> response) {
-                        ObjetoResultado objetoResultado = response.body();
-                        imprimirMensagensDeErros(objetoResultado);
-                        passarDadosEventListener.passarDados(objetoResultado);
-
-                        TabLayout tabLayout = getActivity().findViewById(R.id.tablayout_id);
-                        TabLayout.Tab tab = tabLayout.getTabAt(1);
-                        tab.select();
-                    }
-
-                    @Override
-                    public void onFailure(Call<ObjetoResultado> call, Throwable t) {
-                        Toast.makeText(getContext(), "Ocorreu um erro, por favor, confira a sua internet!", Toast.LENGTH_LONG).show();
-                    }
-                });
+                final Map<String, String> parametros = obterParametros(categoria, titulo, ano);
+                realizarPesquisa(parametros);
             }
         });
         return view;
     }
 
-    public Map<String, String> obterParametros (String categoria, String titulo, String ano) {
+    private void realizarPesquisa(final Map<String, String> parametros) {
+        Call<ObjetoResultado> call = new RetrofitConfig().
+                getMoviesService().buscarFilmes(parametros);
+        call.enqueue(new Callback<ObjetoResultado>() {
+            @Override
+            public void onResponse(Call<ObjetoResultado> call, Response<ObjetoResultado> response) {
+                ObjetoResultado objetoResultado = response.body();
+                if (objetoResultado.getError() != null) {
+                    imprimirMensagensDeErros(objetoResultado);
+                    return;
+                }
+                passarDadosEventListener.passarDados(objetoResultado, parametros);
+
+                TabLayout tabLayout = getActivity().findViewById(R.id.tablayout_id);
+                TabLayout.Tab tab = tabLayout.getTabAt(1);
+                tab.select();
+            }
+
+            @Override
+            public void onFailure(Call<ObjetoResultado> call, Throwable t) {
+                Toast.makeText(getContext(), "Ocorreu um erro, por favor, confira a sua internet!", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private Map<String, String> obterParametros (String categoria, String titulo, String ano) {
         Map<String, String> parametros = new HashMap<>();
         // ApiKey
         parametros.put("apikey", "5cced8c2");
@@ -125,25 +131,25 @@ public class PesquisarFragment extends Fragment {
         if(!ano.equals("")) {
             parametros.put("y", ano);
         }
+        // Pagina
+        parametros.put("page", "1");
         return parametros;
     }
 
-    public void imprimirMensagensDeErros(ObjetoResultado objetoResultado) {
-        if (objetoResultado.getError() != null) {
-            switch (objetoResultado.getError()) {
-                case "Movie not found!":
-                    Toast.makeText(getContext(), R.string.titulo_nao_encontrado, Toast.LENGTH_LONG).show();
-                    break;
-                case "Too many results.":
-                    Toast.makeText(getContext(), R.string.muitos_resultados_encontrados, Toast.LENGTH_LONG).show();
-                    break;
-                case "Series not found!":
-                    Toast.makeText(getContext(), R.string.serie_nao_encontrada, Toast.LENGTH_LONG).show();
-                    break;
-                case "Something went wrong.":
-                    Toast.makeText(getContext(), R.string.um_erro_inesperado_ocorreu, Toast.LENGTH_LONG).show();
-                    break;
-            }
+    private void imprimirMensagensDeErros(ObjetoResultado objetoResultado) {
+        switch (objetoResultado.getError()) {
+            case "Movie not found!":
+                Toast.makeText(getContext(), R.string.titulo_nao_encontrado, Toast.LENGTH_LONG).show();
+                break;
+            case "Too many results.":
+                Toast.makeText(getContext(), R.string.muitos_resultados_encontrados, Toast.LENGTH_LONG).show();
+                break;
+            case "Series not found!":
+                Toast.makeText(getContext(), R.string.serie_nao_encontrada, Toast.LENGTH_LONG).show();
+                break;
+            default:
+                Toast.makeText(getContext(), R.string.um_erro_inesperado_ocorreu, Toast.LENGTH_LONG).show();
+                break;
         }
     }
 }
