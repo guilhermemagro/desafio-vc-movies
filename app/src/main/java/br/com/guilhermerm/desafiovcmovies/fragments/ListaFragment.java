@@ -62,7 +62,6 @@ public class ListaFragment extends Fragment {
                     paginaAtual++;
                     parametros.put("page", paginaAtual.toString());
                     realizarNovaPesquisa();
-                    atualizarDadosDaNovaPesquisa();
                 }
             }
         });
@@ -75,7 +74,6 @@ public class ListaFragment extends Fragment {
                     paginaAtual--;
                     parametros.put("page", paginaAtual.toString());
                     realizarNovaPesquisa();
-                    atualizarDadosDaNovaPesquisa();
                 }
             }
         });
@@ -88,25 +86,26 @@ public class ListaFragment extends Fragment {
         super.onResume();
     }
 
-    public void pesquisaInicialListener(){
+    public void passarDadosPesquisaInicial(){
         MainActivity activity = (MainActivity) getActivity();
         objetoResultado = activity.getObjetoResultado();
         parametros = activity.getParametros();
         atualizarDadosDaNovaPesquisa();
     }
 
-    public void atualizarDadosDaNovaPesquisa() {
+    private void atualizarDadosDaNovaPesquisa() {
         atualizarLista();
         atualizarBotoes();
     }
 
-    public void realizarNovaPesquisa(){
+    private void realizarNovaPesquisa(){
         Call<ObjetoResultado> call = new RetrofitConfig().
                 getMoviesService().buscarFilmes(parametros);
         call.enqueue(new Callback<ObjetoResultado>() {
             @Override
             public void onResponse(Call<ObjetoResultado> call, Response<ObjetoResultado> response) {
                 objetoResultado = response.body();
+                atualizarDadosDaNovaPesquisa();
             }
 
             @Override
@@ -116,7 +115,7 @@ public class ListaFragment extends Fragment {
         });
     }
 
-    public void atualizarLista() {
+    private void atualizarLista() {
         if (objetoResultado != null) {
             ArrayAdapter arrayAdapter = new ResultsAdapter(
                     this.getContext(),(ArrayList<Search>) objetoResultado.getSearch());

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements
     public void passarDados(ObjetoResultado objetoResultado, Map<String, String> parametros) {
         this.objetoResultado = objetoResultado;
         this.parametros = parametros;
-        ((ListaFragment) adapter.getItem(1)).pesquisaInicialListener();
+        ((ListaFragment) adapter.getItem(1)).passarDadosPesquisaInicial();
     }
 
     private void adicionarIcones(){

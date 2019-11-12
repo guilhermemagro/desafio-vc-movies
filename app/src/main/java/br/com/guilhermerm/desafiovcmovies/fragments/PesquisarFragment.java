@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -89,14 +88,11 @@ public class PesquisarFragment extends Fragment {
             public void onResponse(Call<ObjetoResultado> call, Response<ObjetoResultado> response) {
                 ObjetoResultado objetoResultado = response.body();
                 if (objetoResultado.getError() != null) {
-                    imprimirMensagensDeErros(objetoResultado);
+                    imprimirMensagemDeErro(objetoResultado);
                     return;
                 }
                 passarDadosEventListener.passarDados(objetoResultado, parametros);
-
-                TabLayout tabLayout = getActivity().findViewById(R.id.tablayout_id);
-                TabLayout.Tab tab = tabLayout.getTabAt(1);
-                tab.select();
+                mudarDeTab();
             }
 
             @Override
@@ -136,7 +132,7 @@ public class PesquisarFragment extends Fragment {
         return parametros;
     }
 
-    private void imprimirMensagensDeErros(ObjetoResultado objetoResultado) {
+    private void imprimirMensagemDeErro(ObjetoResultado objetoResultado) {
         switch (objetoResultado.getError()) {
             case "Movie not found!":
                 Toast.makeText(getContext(), R.string.titulo_nao_encontrado, Toast.LENGTH_LONG).show();
@@ -151,5 +147,11 @@ public class PesquisarFragment extends Fragment {
                 Toast.makeText(getContext(), R.string.um_erro_inesperado_ocorreu, Toast.LENGTH_LONG).show();
                 break;
         }
+    }
+
+    private void mudarDeTab(){
+        TabLayout tabLayout = getActivity().findViewById(R.id.tablayout_id);
+        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        tab.select();
     }
 }
